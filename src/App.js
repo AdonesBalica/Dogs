@@ -9,27 +9,35 @@ import { UserStorage } from "./contexts/UserContext";
 import User from "./Components/User/User";
 
 import ProtectedRoute from "./Components/Helper/ProtectedRoute/ProtectedRoute";
+import Photo from "./Components/Photo/Photo";
+import UserProfile from "./Components/UserProfile/UserProfile";
+import NotFound from "./Components/NotFound/NotFound";
 
 // meta fazer o title da página mudar automaticamente depedendo da rota em que estou;
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <BrowserRouter>
         <UserStorage>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="login/*" element={<Login />} />
-            <Route
-              path="conta/*"
-              element={
-                <ProtectedRoute>
-                  <User />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+          <main className="AppBody">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="login/*" element={<Login />} />
+              <Route
+                path="conta/*"
+                element={
+                  <ProtectedRoute>
+                    <User />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="foto/:id" element={<Photo />} />
+              <Route path="/perfil/:user" element={<UserProfile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <Footer />
         </UserStorage>
       </BrowserRouter>

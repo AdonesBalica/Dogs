@@ -1,20 +1,14 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import Feed from "../Feed/Feed";
-import Loading from "../Helper/Loading/Loading";
+import Head from "../Helper/Head/Head";
 
 function Home() {
-  const location = useLocation();
-
-  React.useEffect(() => {
-    switch (location.pathname) {
-      default:
-        document.title = "Dogs | Home";
-        break;
-    }
-  }, [location]);
   return (
     <section className="container mainContainer">
+      <Head
+        title="Fotos"
+        description="Nome do site dogs, com o feed de fotos."
+      />
       <Feed />
     </section>
   );
