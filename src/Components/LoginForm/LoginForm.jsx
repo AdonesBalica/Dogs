@@ -16,11 +16,11 @@ function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //login
     if (username.validate() && password.validate()) {
       userLogin(username.value, password.value);
     }
   };
+
   return (
     <section className="animeLeft">
       <h1 className="title">Login</h1>
@@ -33,7 +33,7 @@ function LoginForm() {
           <Button>Entrar</Button>
         )}
 
-        {error && <Error error={error} />}
+        {error && <Error error={error && "Dados incorretos"} />}
       </form>
       <Link className={styles.perdeu} to="/login/perdeu">
         Perdeu a Senha?
